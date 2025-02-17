@@ -3,9 +3,8 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
-    <title>🎵 Para ti, con amor</title>
+    <title>💝 Mi Corazón es Tuyo</title>
     <style>
-        /* Estilos base */
         body {
             text-align: center;
             font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
@@ -26,40 +25,33 @@
             margin: auto;
             padding: 10px;
             position: relative;
-            display: flex;
-            flex-direction: column;
-            align-items: center;
         }
         h1 {
             color: #ffffff;
             font-size: 2em;
             margin-bottom: 30px;
             text-shadow: 2px 2px 4px rgba(0,0,0,0.2);
-            padding: 0 15px;
         }
         .message {
             background: rgba(255, 255, 255, 0.95);
             padding: 20px;
             border-radius: 15px;
             box-shadow: 0 4px 15px rgba(0,0,0,0.1);
-            margin: 10px;
+            margin: 10px auto;
             width: 90%;
             max-width: 400px;
-            position: relative;
-            z-index: 2;
-        }
-        .photo-gallery {
-            width: 90%;
-            max-width: 400px;
-            margin: 20px auto;
             display: none;
         }
         .photo-container {
             background: white;
-            padding: 10px;
+            padding: 15px;
             border-radius: 15px;
             margin-bottom: 20px;
             box-shadow: 0 4px 15px rgba(0,0,0,0.1);
+            transition: transform 0.3s ease;
+        }
+        .photo-container:hover {
+            transform: scale(1.02);
         }
         .photo-container img {
             width: 100%;
@@ -88,7 +80,6 @@
             background: #fff;
             color: #ff6b6b;
             box-shadow: 0 4px 15px rgba(0,0,0,0.1);
-            z-index: 3;
         }
         .yes {
             background: #ff6b6b;
@@ -106,113 +97,128 @@
             position: fixed;
             font-size: 24px;
             pointer-events: none;
-            z-index: 1;
             animation: float 4s ease-in infinite;
         }
         @keyframes float {
             0% { transform: translateY(0) rotate(0deg); opacity: 1; }
             100% { transform: translateY(-100vh) rotate(360deg); opacity: 0; }
         }
-        .final-message {
+        .sparkle {
+            position: fixed;
+            pointer-events: none;
+            font-size: 20px;
+            animation: sparkleAnim 1.5s linear forwards;
+        }
+        @keyframes sparkleAnim {
+            0% { transform: scale(0) rotate(0deg); opacity: 0; }
+            50% { transform: scale(1) rotate(180deg); opacity: 1; }
+            100% { transform: scale(0) rotate(360deg); opacity: 0; }
+        }
+        .photos {
             display: none;
-            color: white;
-            text-shadow: 2px 2px 4px rgba(0,0,0,0.2);
-            animation: fadeIn 1s ease-in;
-            text-align: center;
-            margin-top: 20px;
+            width: 90%;
+            max-width: 400px;
+            margin: 20px auto;
         }
-        @keyframes fadeIn {
-            from { opacity: 0; }
-            to { opacity: 1; }
+        #mainTitle {
+            cursor: pointer;
+            transition: transform 0.3s ease;
         }
-        .button-container {
-            display: flex;
-            flex-direction: column;
-            align-items: center;
-            width: 100%;
-            gap: 10px;
+        #mainTitle:hover {
+            transform: scale(1.05);
+        }
+        .pulse {
+            animation: pulse 2s infinite;
+        }
+        @keyframes pulse {
+            0% { transform: scale(1); }
+            50% { transform: scale(1.05); }
+            100% { transform: scale(1); }
         }
     </style>
 </head>
 <body>
     <div class="container">
-        <h1 id="mainTitle">Toca aquí para una sorpresa especial... 🎁</h1>
-        
-        <div class="message" id="question1" style="display: none;">
-            <p>¿Lista para una sorpresa muy especial?</p>
-            <div class="button-container">
-                <button class="yes" onclick="nextQuestion()">¡Sí! 😊</button>
-                <button class="no" onclick="moveButtonMobile(this)">No tanto...</button>
-            </div>
+        <h1 id="mainTitle" class="pulse">Toca aquí para una sorpresa... 💝</h1>
+
+        <div class="message" id="question1">
+            <p>¿Lista para ver algo especial?</p>
+            <button class="yes" onclick="nextQuestion()">¡Sí! 💖</button>
+            <button class="no" onclick="moveButton(this)">No sé... 🤔</button>
         </div>
 
-        <div class="message" id="question2" style="display: none;">
-            <p>Antes de continuar...</p>
-            <p>¿Me permites mostrarte algo?</p>
-            <div class="button-container">
-                <button class="yes" onclick="showPhotos()">¡Claro! 💖</button>
-                <button class="no" onclick="moveButtonMobile(this)">Mejor no</button>
-            </div>
-        </div>
-
-        <div class="photo-gallery" id="photos">
+        <div class="photos" id="photos">
             <div class="photo-container">
-                <img src="https://i.ibb.co/zhjL6W8F/IMG-5880.jpg" alt="Nuestro momento especial">
-                <div class="photo-caption">Momentos que atesoro ❤️</div>
-                <div class="photo-text">Cada instante contigo es mágico</div>
+                <img src="https://i.ibb.co/zhjL6W8F/IMG-5880.jpg" alt="Nosotros">
+                <div class="photo-caption">✨ Contigo, cada momento es mágico ✨</div>
+                <div class="photo-text">Me encanta cómo iluminas mi vida con tu presencia</div>
             </div>
             
             <div class="photo-container">
                 <img src="https://i.ibb.co/Vpr07LVW/IMG-5884.jpg" alt="Juntos">
-                <div class="photo-caption">Sonrisas que iluminan mi día ✨</div>
-                <div class="photo-text">Tu alegría lo es todo para mí</div>
+                <div class="photo-caption">💫 Eres mi persona favorita 💫</div>
+                <div class="photo-text">Cada día me enamoro más de tu forma de ser</div>
             </div>
             
             <div class="photo-container">
-                <img src="https://i.ibb.co/Y7qmWtJ2/07003283-91-C4-4-D07-B2-A2-849-DF60-FCA72.jpg" alt="Nosotros">
-                <div class="photo-caption">Nuestro camino juntos 💫</div>
-                <div class="photo-text">Cada día me enamoro más de ti</div>
+                <img src="https://i.ibb.co/Y7qmWtJ2/07003283-91-C4-4-D07-B2-A2-849-DF60-FCA72.jpg" alt="Especial">
+                <div class="photo-caption">💝 Juntos todo es mejor 💝</div>
+                <div class="photo-text">No puedo imaginar mi vida sin tu sonrisa</div>
             </div>
             
-            <button class="yes" onclick="showFinalQuestion()">Continuar 💝</button>
+            <button class="yes pulse" onclick="startFunnyQuestions()">Tengo algo que preguntarte... 💕</button>
         </div>
 
-        <div class="message" id="finalQuestion" style="display: none;">
-            <p style="font-size: 1.5em; color: #ff6b6b;">¿Quieres ser mi novia? 💕</p>
-            <div class="button-container">
-                <button class="yes" onclick="celebrate()">¡Sí quiero! 💑</button>
-                <button class="no" onclick="moveButtonMobile(this)">No quiero</button>
-            </div>
+        <div class="message" id="funnyQuestion1">
+            <p>Antes de continuar... ¿Estás lista para aguantar mis chistes malos? 🤪</p>
+            <button class="yes" onclick="nextFunnyQuestion(2)">¡Por supuesto! 😄</button>
+            <button class="no" onclick="moveButton(this)">Depende... 🤔</button>
         </div>
 
-        <div class="final-message" id="celebration" style="display: none;">
-            <h2>¡Me haces inmensamente feliz! 💑</h2>
+        <div class="message" id="funnyQuestion2">
+            <p>¿Prometes darme amor y también compartir tu comida? 🍕</p>
+            <button class="yes" onclick="nextFunnyQuestion(3)">¡Todo tuyo! 🥰</button>
+            <button class="no" onclick="moveButton(this)">¡La comida no! 😅</button>
+        </div>
+
+        <div class="message" id="funnyQuestion3">
+            <p>¿Me vas a abrazar cuando esté triste y reír de mis locuras? 🌟</p>
+            <button class="yes" onclick="nextFunnyQuestion(4)">¡Siempre! 💕</button>
+            <button class="no" onclick="moveButton(this)">Lo pensaré 🤔</button>
+        </div>
+
+        <div class="message" id="funnyQuestion4">
+            <p>Y lo más importante... ¿Lista para una aventura juntos? ✨</p>
+            <button class="yes" onclick="showFinalQuestion()">¡Más que lista! 💖</button>
+            <button class="no" onclick="moveButton(this)">¡Espera! 😅</button>
+        </div>
+
+        <div class="message" id="finalQuestion">
+            <p style="font-size: 1.5em; color: #ff6b6b;">Mi corazón ya te eligió... ¿Quieres ser mi novia? 💕</p>
+            <button class="yes pulse" onclick="celebrate()">¡SÍ QUIERO! 💑</button>
+            <button class="no" onclick="moveButton(this)">Necesito pensarlo 🤔</button>
+        </div>
+
+        <div class="message" id="celebration">
+            <h2>¡Me haces muy feliz! 💑</h2>
             <p>Este es el comienzo de algo maravilloso 💕</p>
+            <p>Te quiero muchísimo 💝</p>
         </div>
     </div>
 
     <script>
         document.getElementById('mainTitle').addEventListener('click', function() {
             this.style.display = 'none';
-            startSurprise();
-        });
-
-        function startSurprise() {
             document.getElementById('question1').style.display = 'block';
-        }
+        });
 
         function nextQuestion() {
             document.getElementById('question1').style.display = 'none';
-            document.getElementById('question2').style.display = 'block';
-        }
-
-        function showPhotos() {
-            document.getElementById('question2').style.display = 'none';
             document.getElementById('photos').style.display = 'block';
             createHearts();
         }
 
-        function moveButtonMobile(button) {
+        function moveButton(button) {
             const container = document.querySelector('.container');
             const containerRect = container.getBoundingClientRect();
             const maxX = containerRect.width - button.offsetWidth - 20;
@@ -224,8 +230,28 @@
             button.style.top = newY + 'px';
         }
 
-        function showFinalQuestion() {
+        function startFunnyQuestions() {
             document.getElementById('photos').style.display = 'none';
+            document.getElementById('funnyQuestion1').style.display = 'block';
+        }
+
+        function nextFunnyQuestion(num) {
+            // Ocultar todas las preguntas divertidas
+            for(let i = 1; i <= 4; i++) {
+                document.getElementById('funnyQuestion' + i).style.display = 'none';
+            }
+            
+            if(num <= 4) {
+                document.getElementById('funnyQuestion' + num).style.display = 'block';
+                createSparkles();
+            }
+        }
+
+        function showFinalQuestion() {
+            // Ocultar todas las preguntas divertidas
+            for(let i = 1; i <= 4; i++) {
+                document.getElementById('funnyQuestion' + i).style.display = 'none';
+            }
             document.getElementById('finalQuestion').style.display = 'block';
         }
 
@@ -238,6 +264,16 @@
                 document.body.appendChild(heart);
                 setTimeout(() => heart.remove(), 4000);
             }, 300);
+        }
+
+        function createSparkles() {
+            const sparkle = document.createElement('div');
+            sparkle.className = 'sparkle';
+            sparkle.innerHTML = '✨';
+            sparkle.style.left = Math.random() * window.innerWidth + 'px';
+            sparkle.style.top = Math.random() * window.innerHeight + 'px';
+            document.body.appendChild(sparkle);
+            setTimeout(() => sparkle.remove(), 1500);
         }
 
         function celebrate() {
@@ -254,6 +290,8 @@
                 document.body.appendChild(heart);
                 setTimeout(() => heart.remove(), 4000);
             }, 200);
+
+            setInterval(createSparkles, 500);
         }
     </script>
 </body>
