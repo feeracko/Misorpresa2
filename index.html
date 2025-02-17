@@ -1,0 +1,134 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>¿Quieres ser mi novia?</title>
+    <style>
+        body {
+            text-align: center;
+            font-family: Arial, sans-serif;
+            background-color: #ffebf0;
+        }
+        h1 {
+            color: #ff4d4d;
+            font-size: 2.5em;
+            margin-top: 50px;
+        }
+        .buttons {
+            margin-top: 20px;
+            position: relative;
+        }
+        button {
+            padding: 15px 25px;
+            font-size: 20px;
+            margin: 10px;
+            cursor: pointer;
+            border: none;
+            border-radius: 10px;
+            transition: 0.3s;
+        }
+        .yes {
+            background-color: #ff4d4d;
+            color: white;
+            font-weight: bold;
+        }
+        .no {
+            background-color: #333;
+            color: white;
+            position: relative; /* Asegura que el botón esté dentro de su contenedor */
+        }
+        .gallery {
+            display: none;
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: rgba(0, 0, 0, 0.8);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            flex-wrap: wrap;
+            gap: 15px;
+            padding: 20px;
+            z-index: 1000;
+        }
+        .gallery img {
+            width: 200px;
+            height: auto;
+            border-radius: 15px;
+            box-shadow: 0px 0px 15px rgba(255, 255, 255, 0.7);
+        }
+        .heart {
+            position: absolute;
+            font-size: 20px;
+            color: red;
+            animation: float 4s linear infinite;
+        }
+        @keyframes float {
+            0% { transform: translateY(0); opacity: 1; }
+            100% { transform: translateY(-100vh); opacity: 0; }
+        }
+    </style>
+</head>
+<body>
+
+    <h1>¿Quieres ser mi novia? ❤️</h1>
+    <div class="buttons">
+        <button class="yes" onclick="mostrarSorpresa()">Sí</button>
+        <button class="no" onmouseover="mueveBoton()">No</button>
+    </div>
+
+    <div class="gallery" id="gallery">
+        <h2 style="color: white;">¡Sabía que dirías que sí! 😍</h2>
+        <div id="imagenes"></div>
+    </div>
+
+    <script>
+        function mueveBoton() {
+            let x = Math.random() * (window.innerWidth - 100);
+            let y = Math.random() * (window.innerHeight - 50);
+            const boton = document.querySelector(".no");
+
+            boton.style.left = `${x}px`;
+            boton.style.top = `${y}px`;
+        }
+
+        function mostrarSorpresa() {
+            document.getElementById("gallery").style.display = "flex";
+
+            let imagenes = [
+                "https://i.imgur.com/l4LcaFL.jpg",
+                "https://i.imgur.com/VsTxFoz.jpg",
+                "https://i.imgur.com/UxuGkMp.jpg",
+                "https://i.imgur.com/uyUd3WR.jpg",
+                "https://i.imgur.com/aRlCQ5I.jpg",
+                "https://i.imgur.com/za2gsW1.jpg"
+            ];
+
+            let contenedor = document.getElementById("imagenes");
+            contenedor.innerHTML = "";
+            
+            imagenes.forEach(url => {
+                let img = document.createElement("img");
+                img.src = url;
+                contenedor.appendChild(img);
+            });
+
+            for (let i = 0; i < 50; i++) {
+                let heart = document.createElement("div");
+                heart.innerHTML = "❤️";
+                heart.classList.add("heart");
+                heart.style.left = Math.random() * window.innerWidth + "px";
+                heart.style.top = Math.random() * window.innerHeight + "px";
+                heart.style.fontSize = Math.random() * 30 + 10 + "px";
+                document.body.appendChild(heart);
+
+                setTimeout(() => { heart.remove(); }, 4000);
+            }
+        }
+    </script>
+
+</body>
+</html>
